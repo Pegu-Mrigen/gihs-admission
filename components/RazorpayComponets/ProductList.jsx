@@ -10,7 +10,7 @@ const ProductList = () => {
   const makePayment = async ({ productId = null }) => {
     const key = process.env.RAZORPAY_API_KEY;
     console.log(key);
-    const data = await fetch("http://localhost:3000/api/razorpay");
+    const data = await fetch("https://gihs-admission.vercel.app/api/razorpay");
     const { order } = await data.json();
     console.log(order.id);
     const options = {
@@ -28,7 +28,7 @@ const ProductList = () => {
         // }
         console.log(response);
 
-        const data = await fetch("http://localhost:3000/api/paymentverify", {
+        const data = await fetch("https://gihs-admission.vercel.app/api/paymentverify", {
           method: "POST",
           body: JSON.stringify({
             razorpay_payment_id: response.razorpay_payment_id,
